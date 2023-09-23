@@ -8,7 +8,6 @@
 // Downloaded ffmpeg source file and configured it using ./configure from git bash, later adding those folders to mingw include directory manually
 // Refer to https://trac.ffmpeg.org/wiki/CompilationGuide/MinGW
 
-    
 // A function to write RGB information to PPM file(idk what this format does but it has RGB info laid out in a long string in binary)
 void SaveFrame(AVFrame *pFrame, int width, int height, int iFrame);
 
@@ -126,6 +125,11 @@ int main(int argc, char *argv[]){
         if(packet.stream_index == videoStream){
             // Decode video frame from packet
             avcodec_decode_video2(pCodecCtx, pFrame, &frameFinished, &packet);
+/*
+    Use the attached code to get a feel for the functions to replace above call 
+    https://www.ffmpeg.org/doxygen/4.0/decode__video_8c_source.html
+*/
+
 
             // Did we get a video frame?
             if(frameFinished){
